@@ -2,3 +2,13 @@
 	
 	font-family:  Arial;
 }
+.img-listview-homepage{
+	height: 60px;
+	display: block; 
+	max-width: 100%;
+}
+.ul-ft ul li{
+	list-style: none;
+	font-size: 12px;
+	line-height: 26px;
+}

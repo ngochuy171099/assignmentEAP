@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dkm</title>
+</head>
+<body>
+<script>
+    let search = location.search;
+    search = search.replace("?", "").split("&");
+    let code = "";
+    for (let temp of search) {
+        if (temp.includes("code=")) {
+            code = temp.replace("code=", "");
+        }
+    }
+
+    let req = new XMLHttpRequest();
+    req.open("get", "https://oauth2server20181116083841.azurewebsites.net/oauth2/ExchangeToken?exchangeCode=" + code);
+    req.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
+            let res = JSON.parse(this.responseText);
+            localStorage.setItem("accessToken", res.accessToken);
+            location.href = "./html/Home-page.html";
+        } else if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    };
+
+    req.send();
+</script>
+</body>
+</html>
