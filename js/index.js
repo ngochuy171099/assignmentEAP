@@ -26,7 +26,7 @@ $(document).ready(function () {
                                 </div>
     
                                 <div class="col-6 p-0" style="font-size: 14px">
-                                    <div><a class="text-dark" style="font-size: 16px; font-weight: 500;" href="#">${song.name}</a></div>
+                                    <div><a class="text-dark" style="font-size: 16px; font-weight: 500;" href="/html/Play-Song.html?id=${song.id}">${song.name}</a></div>
                                     <span><a class="text-secondary" style="font-size: 11px"
                                              href="#">${song.singer}</a></span>
                                 </div>
