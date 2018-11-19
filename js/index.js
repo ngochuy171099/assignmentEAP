@@ -58,5 +58,7 @@ $(document).ready(function () {
                 }
             }
         });
+    } else {
+        location.href = `${OAUTH2_SERVER}?clientId=${CLIENT_ID}&scopes=${SCOPES}`;
     }
 });
