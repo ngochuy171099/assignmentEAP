@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="border-bottom: 1px solid #4facfe">
 
-    <a class="navbar-brand text-primary" href="#">Mp3.Zing</a>
+    <a class="navbar-brand text-primary" href="../html/Home-page.html">Mp3.Zing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,23 +24,23 @@
 
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link text-primary form-control-sm" href="#">Home <span
+                <a class="nav-link text-light form-control-sm" href="#">Home <span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary form-control-sm" href="#">Bài Hát</a>
+                <a class="nav-link text-light form-control-sm" href="#">Bài Hát</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary form-control-sm" href="#">Playlist</a>
+                <a class="nav-link text-light form-control-sm" href="#">Playlist</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary form-control-sm" href="#">Tuyển Tập</a>
+                <a class="nav-link text-light form-control-sm" href="#">Tuyển Tập</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary form-control-sm" href="#">Video</a>
+                <a class="nav-link text-light form-control-sm" href="#">Video</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-primary form-control-sm" href="#">Thêm Bài Hát</a>
+                <a class="nav-link text-light form-control-sm" href="../html/Register-Song.html">Thêm Bài Hát</a>
             </li>
         </ul>
 
@@ -61,27 +61,27 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="list-unstyled">
-                        <li><span class="font-weight-bold">Hongkong1 (Official Version)</span></li>
-                        <li><span class="" style="font-size: 14px;">Sáng Tác: Nguyễn Trọng Tài, San Ji, Double X </span>
+                        <li><span class="font-weight-bold name"></span></li>
+                        <li><span class="author" style="font-size: 14px;"></span>
                         </li>
-                        <li><span style="font-size: 14px;">Thể Loại: Việt Nam, Nhạc Trẻ</span></li>
+                        <li><span class="description" style="font-size: 14px;"></span></li>
                     </ul>
                 </div>
             </div>
-            <div class="row bg-primary p-2 rounded">
+            <div class="row bg-primary p-2 rounded" style="opacity: 0.7">
                 <div class="col-5">
-                    <img class="rounded-circle" style="width: 70%"
-                         src="https://photo-resize-zmp3.zadn.vn/w240h240_jpeg/cover/f/8/f/2/f8f2cd19c3e2e48603a510888807c363.jpg">
+                    <img class="rounded-circle" style="width: 70%" id="img"
+                         src="">
                 </div>
                 <div class="col-7 mt-4">
 
-                    <div><span class="text-light text-center col-12">Hongkong1 (Official Version)</span></div>
+                    <div><span class="text-light text-center col-12 name"></span></div>
 
-                    <div><span class="text-light text-center col-12 ">Tiên Tiên , Touliver</span></div>
+                    <div><span class="text-light text-center col-12 author"></span></div>
                 </div>
                 <div class="col-12 mt-2">
-                    <audio class="" style="width: 100%" controls>
-                        <source src="https://c1-ex-swe.nixcdn.com/NhacCuaTui969/NhuLoiDon-BaoAnh-5700656.mp3"
+                    <audio class="" style="width: 100%" controls id="player" autoplay>
+                        <source src=""
                                 type="audio/mpeg">
                     </audio>
                 </div>
@@ -204,9 +204,6 @@
     </div>
 </div>
 </body>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>

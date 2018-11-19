@@ -1,5 +1,7 @@
 function doSubmit() {
-
+    const OAUTH2_SERVER = "https://oauth2server20181116083841.azurewebsites.net/oauth2/authorization";
+    const CLIENT_ID = "c0c61d63-1ba7-444a-be40-a91c0894a40c";
+    const SCOPES = "http://basicscope.com,http://songresourcescope.com,http://videoscope.com";
     let form = document.forms.postsong;
 
     var data = {
@@ -29,5 +31,7 @@ function doSubmit() {
                 }
             }
         });
+    } else {
+        location.href = `${OAUTH2_SERVER}?clientId=${CLIENT_ID}&scopes=${SCOPES}`;
     }
 }
