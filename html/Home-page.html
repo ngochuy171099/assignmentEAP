@@ -111,26 +111,13 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <span class="form-control-sm text-uppercase text-info">chủ đề hot</span>
-                    <div class="mt-1 mb-2">
-                        <a href="#"><img class="img-fluid"
-                                         src="https://photo-zmp3.zadn.vn/covers/2/a/2ac9d9aa479519e1724db5b860373578_1499827968.jpg"></a>
+                    <div id="ListCategories">
+                        <!--<div class="mt-1 mb-2">-->
+                            <!--<a href="#"><img class="img-fluid"-->
+                                             <!--src="https://avatar-nct.nixcdn.com/playlist/2015/03/21/1/3/7/8/1426910357787_500.jpg"></a>-->
+                        <!--</div>-->
                     </div>
-                    <div class="mt-1 mb-2">
-                        <a href="#"><img class="img-fluid"
-                                         src="https://photo-zmp3.zadn.vn/covers/c/5/c5360ad3d2e28b5bb5f0d0930a6a6a6f_1499827454.jpg"></a>
-                    </div>
-                    <div class="mt-1 mb-2">
-                        <a href="#"><img class="img-fluid"
-                                         src="https://photo-zmp3.zadn.vn/covers/e/9/e92910699de0aeee9f1587e0425d8a7c_1514894974.png"></a>
-                    </div>
-                    <div class="mt-1 mb-2">
-                        <a href="#"><img class="img-fluid"
-                                         src="https://photo-zmp3.zadn.vn/covers/f/7/f766f301706abd51957040cf1dedeaad_1510648555.jpg"></a>
-                    </div>
-                    <div class="mt-1 mb-1">
-                        <a href="#"><img class="img-fluid"
-                                         src="https://photo-zmp3.zadn.vn/covers/1/e/1e8a106b249567119009a8149e1b77ff_1499827613.jpg"></a>
-                    </div>
+
                     <span><a style="font-size: 15px;text-decoration: none;" href="#">Xem thêm chủ đề khác</a></span>
                 </div>
 
@@ -219,4 +206,61 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
+<script>
+    function loadSongCategory(id) {
+        $.ajax({
+            url: "https://oauth2resourceserver20181116085012.azurewebsites.net/api/Songs?category_id=" + id,
+            method: "get",
+            headers: {
+                authorization: "Basic " + localStorage.getItem("accessToken")
+            },
+            success: function (res) {
+                let html = "";
+                for (let song of res) {
+                    html += `
+                        <li class="list-group-item pl-0 pr-0 pt-2 pb-2">
+                            <div class="row p-0">
+                                <div class="col-1">
+                                    <p class="text-primary">${song.id}</p>
+                                </div>
+
+                                <div class="col-2">
+                                    <img class="img-listview-homepage float-right img-fluid"
+                                         src="${song.thumbnail}">
+                                </div>
+
+                                <div class="col-6 p-0" style="font-size: 14px">
+                                    <div><a class="text-dark" style="font-size: 16px; font-weight: 500;" href="/html/Play-Song.html?id=${song.id}">${song.name}</a></div>
+                                    <span><a class="text-secondary" style="font-size: 11px"
+                                             href="#">${song.singer}</a></span>
+                                </div>
+
+                                <div class="col-3 pr-0">
+
+                                    <div style="font-size: 14px" class="mt-2 float-left pl-1 pr-2">
+                                        <a class="text-secondary" href="#"><i class="fas fa-download"></i></a>
+                                    </div>
+
+                                    <div style="font-size: 14px" class="mt-2 float-left pl-2 pr-3">
+                                        <a class="text-secondary" href="#"><i class="fas fa-plus"></i></a>
+                                    </div>
+
+                                    <div style="font-size: 14px" class="mt-2">
+                                        <a class="text-secondary" href="#"><i class="fas fa-share-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    `
+                }
+                $("#ListSongs").html(html);
+            },
+            error: function (e) {
+                if (e.status === 403) {
+                    location.href = `${OAUTH2_SERVER}?clientId=${CLIENT_ID}&scopes=${SCOPES}`;
+                }
+            }
+        });
+    }
+</script>
 </html>

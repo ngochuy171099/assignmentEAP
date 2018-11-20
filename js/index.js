@@ -50,7 +50,6 @@ $(document).ready(function () {
                     `
                 }
                 $("#ListSongs").html(html);
-                console.log(res[0]);
             },
             error: function (e) {
                 if (e.status === 403) {
@@ -58,7 +57,35 @@ $(document).ready(function () {
                 }
             }
         });
+        $.ajax({
+            url: "https://oauth2resourceserver20181116085012.azurewebsites.net/api/Categories",
+            method: "get",
+            headers: {
+                authorization: "Basic " + localStorage.getItem("accessToken")
+            },
+            success: function (res) {
+                let html = "";
+                for (let category of res) {
+                    html += `
+                            <div class="mt-1 mb-2">
+                                <a href="#"><img class="img-fluid"
+                                             src="${category.thumbnail}" onclick="loadSongCategory(${category.id})"></a>
+                            </div>`
+                }
+                $("#ListCategories").html(html);
+
+            },
+            error: function (e) {
+                if (e.status === 403) {
+                    location.href = `${OAUTH2_SERVER}?clientId=${CLIENT_ID}&scopes=${SCOPES}`;
+                }
+            }
+        });
+
     } else {
         location.href = `${OAUTH2_SERVER}?clientId=${CLIENT_ID}&scopes=${SCOPES}`;
     }
+
+
+
 });
